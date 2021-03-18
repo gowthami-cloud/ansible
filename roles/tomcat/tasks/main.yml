@@ -1,0 +1,17 @@
+---
+# tasks file for tomcat
+- name: Install tomcat tomcat-webappa tomcat-admin-webapps tomcat-docs-webapp
+  yum:
+    name: {{ item }}
+    state: installed
+  loop: 
+    - tomcat
+    - tomcat-webapps
+    - tomcat-admin-webapps
+    - tomcat-docs-webapp
+
+- name: start the tomcat service
+  service:
+    name: tomcat
+    state: started
+...
